@@ -30,6 +30,6 @@ public class Redirect {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView redirectToDocPage(HttpServletRequest request) {
-        return new ModelAndView("redirect:" + request.getScheme() + DOC_UR);
+        return new ModelAndView("redirect:" + request.getScheme() + DOC_URL);
     }
 }
