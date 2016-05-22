@@ -17,14 +17,14 @@ To run and deploy the project on your local or any desired server, first clone t
 	$ java -jar neat-geo-ip-1.0-SNAPSHOT.jar
 
 ##Project & API documentation
-To know more about the project structure and API documentation please refer to our Github page [documentation](http://kasramp.github.io/neatgeoip/) at this link.
+To know more about the project structure and API documentation please refer to our Github page [documentation](http://kasramp.github.io/neatgeoip/documentation.html) at this link.
 
 ## Contact
 * kasra@madadipouya.com  
 * kasra_mp@live.com  
 	
 ## Disclaimer
-The source of this project is published under GPLv3 excluding the database file which belongs to [MaxMind](http://www.maxmind.com) Copyright© 2012-2016 MaxMind, Inc. All Rights Reserved. For more information about terms and conditons refer to our Github page section "[License and terms & conditions](http://kasramp.github.io/neatgeoip/)".
+The source of this project is published under GPLv3 excluding the database file which belongs to [MaxMind](http://www.maxmind.com) Copyright© 2012-2016 MaxMind, Inc. All Rights Reserved. For more information about terms and conditons refer to our Github page section "[License and terms & conditions](http://kasramp.github.io/neatgeoip/#license-and-terms--conditions)".
 
 This product includes GeoLite2 data created by MaxMind, available from
 <a href="http://www.maxmind.com">http://www.maxmind.com</a>.
