@@ -1,5 +1,7 @@
 package com.madadipouya.neatgeoip.wrapper;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.madadipouya.neatgeoip.Application;
 import com.madadipouya.neatgeoip.pojo.Country;
 import com.madadipouya.neatgeoip.util.config.LoadDbFile;
@@ -10,6 +12,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
@@ -76,13 +79,21 @@ public class MaxMindAgent {
 
     private Country resultMapper(CityResponse response) {
         try {
+            if(StringUtils.isEmpty(response.getCountry().getName())) {
+                return noMatchingCountry();
+            }
             country.setName(response.getCountry().getName())
                     .setIsoCode(response.getCountry().getIsoCode())
                     .setNames(response.getCountry().getNames());
         } catch(Exception ex) {
-            ex.printStackTrace();
-            Application.log.error(ex.getMessage());
+            noMatchingCountry();
         }
         return country;
+    }
+
+    private Country noMatchingCountry() {
+        return country.setName("").setIsoCode("")
+                .setNames(ImmutableMap.<String, String>builder().build())
+                .setErrors(ImmutableList.<String>builder().add("Country not found!").build());
     }
 }
