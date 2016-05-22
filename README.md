@@ -2,7 +2,7 @@
 Neat Geo IP is a simple & free IP to country API
 
 ##Description
-Neat Geo IP is a simple Spring Boot Restful webservice which allows you to get the country of any given IP address. For IP address lookip [MaxMind](http://www.maxmind.com) database is used and it is automatically getting updated monthly via a bash script.
+Neat Geo IP is a simple Spring Boot Restful webservice which allows you to get the country of any given IP address. For IP address lookup [MaxMind](http://www.maxmind.com) database is used and it is automatically getting updated monthly via a bash script.
 The project is hosted on Openshift free tier and is available for anyone to use.
 Bear in mind that the service has 5-15 minutes down time every month due to automated database updating process.
 
