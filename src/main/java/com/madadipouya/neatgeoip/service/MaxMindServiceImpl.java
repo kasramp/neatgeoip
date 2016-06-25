@@ -1,10 +1,9 @@
-package com.madadipouya.neatgeoip.wrapper;
+package com.madadipouya.neatgeoip.service;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.madadipouya.neatgeoip.Application;
 import com.madadipouya.neatgeoip.pojo.Country;
-import com.madadipouya.neatgeoip.util.config.LoadDbFile;
+import com.madadipouya.neatgeoip.util.loader.DatabaseFileLoader;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
@@ -12,13 +11,12 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 /*
 * This file is part of NeatGeoIP.
 *
@@ -36,15 +34,15 @@ import java.net.UnknownHostException;
 * © 2016 Kasra Madadipouya <kasra@madadipouya.com>
 */
 
-@Component
+@Service
 @Data
-public class MaxMindAgent {
+public class MaxMindServiceImpl implements MaxMindService {
 
 
     @Autowired
     @Getter(AccessLevel.PRIVATE)
     @Setter(AccessLevel.PRIVATE)
-    private LoadDbFile loadDbFile;
+    private DatabaseFileLoader databaseFileLoader;
 
     @Autowired
     @Getter(AccessLevel.PRIVATE)
@@ -57,10 +55,11 @@ public class MaxMindAgent {
 
     @Autowired
     private void loadDatabaseFile() {
-        setReader(loadDbFile.getFile());
+        setReader(databaseFileLoader.loadDatabaseFileFromDisk());
     }
 
-    public Country getResult(String ip) {
+    @Override
+    public Country findCountryFor(String ip) {
         return resultMapper(lookup(ip));
     }
 
@@ -79,7 +78,7 @@ public class MaxMindAgent {
 
     private Country resultMapper(CityResponse response) {
         try {
-            if(StringUtils.isEmpty(response.getCountry().getName())) {
+            if(isEmpty(response.getCountry().getName())) {
                 return noMatchingCountry();
             }
             country.setName(response.getCountry().getName())

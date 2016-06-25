@@ -1,4 +1,4 @@
-package com.madadipouya.neatgeoip.controller;
+package com.madadipouya.neatgeoip.rest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,12 +24,12 @@ import javax.servlet.http.HttpServletRequest;
 */
 
 @RestController
-public class Redirect {
+public class HomeRestController {
 
-    private static final String DOC_URL = "://kasramp.github.io/neatgeoip/";
+    private static final String HOMEPAGE_URL = "://kasramp.github.io/neatgeoip/";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView redirectToDocPage(HttpServletRequest request) {
-        return new ModelAndView("redirect:" + request.getScheme() + DOC_URL);
+        return new ModelAndView("redirect:" + request.getScheme() + HOMEPAGE_URL);
     }
 }

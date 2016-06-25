@@ -1,8 +1,8 @@
-package com.madadipouya.neatgeoip.controller;
+package com.madadipouya.neatgeoip.rest;
 
 import com.madadipouya.neatgeoip.Application;
 import com.madadipouya.neatgeoip.pojo.Country;
-import com.madadipouya.neatgeoip.wrapper.MaxMindAgent;
+import com.madadipouya.neatgeoip.service.MaxMindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,18 +28,18 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 */
 
 @RestController
-public class CountryController {
+public class CountryRestController {
 
     @Autowired
-    private MaxMindAgent maxMindAgent;
+    private MaxMindService maxMindService;
 
     @RequestMapping("/getCountry")
-    public Country getLyric(@RequestParam(value="ip") String ip) {
+    public Country getCountry(@RequestParam(value="ip") String ip) {
         try {
             if(isEmpty(ip)) {
                 return Country.class.newInstance().setErrors(Lists.newArrayList("No IP Provided!"));
             }
-            return maxMindAgent.getResult(ip);
+            return maxMindService.findCountryFor(ip);
         } catch(Exception ex) {
             Application.log.error(ex.getMessage());
             ex.printStackTrace();
