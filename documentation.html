@@ -84,16 +84,16 @@
     Application.java starts Spring Boot application.
   </p>
   <h5>
-    CountryController.java
+    CountryRestController.java
   </h5>
   <p>
-    CountryController.java refers to service at <strong>"/getCountry"</strong> which looks up for the country of the given IP address.
+    CountryRestController.java refers to service at <strong>"/getCountry"</strong> which looks up for the country of the given IP address.
   </p>
   <h5>
-    Redirect.java
+    HomeRestController.java
   </h5>
   <p>
-    Redirect.java refers to service at <strong>"/"</strong> which redirects user to Neat Geo IP Github page.
+    HomeRestController.java refers to service at <strong>"/"</strong> which redirects user to Neat Geo IP Github page.
   </p>
   <h5>
     Country.java
@@ -102,16 +102,22 @@
     Country.java is the content of the service which returns to the user. The content includes name (countryName), isoCode, name of the country in other languages (German, Russian, Portuguese [Brazil], Japanese, English, French, Chinese, and Spanish). The final parameter is error in which demonstrates occurred error in the API call.
   </p>
   <h5>
-    LoadDbFile.java
+    MaxMindService.java
   </h5>
   <p>
-    LoadDbFile.java contains the logic of loading the database file based on environment application running. If the database file exists in the local repository ("/db" folder), it uses the file, otherwise, it attempts to download the file from MaxMind server and unzip it as well. The logic of this class is optimized for Openshift and usual normal environment. Keep note that the database file is loaded into memory, if your instance has shortage of the memory, comment <code>`line 57`</code> in <code>LoadDbFile.java</code>.
+    MaxMindService.java is an interface to get the country name of the IP.
   </p>
   <h5>
-    MaxMind.java
+    MaxMindServiceImpl.java
   </h5>
   <p>
-    MaxMind.java includes a wrapper for MaxMind library to easily use the library and get the country name of the IP.
+    MaxMindServiceImpl.java is the implementation of MaxMindService.java which utilizes MaxMind library as.
+  </p>
+  <h5>
+    DatabaseFileLoader.java
+  </h5>
+  <p>
+    DatabaseFileLoader.java contains the logic of loading the database file based on environment application running. If the database file exists in the local repository ("/db" folder), it uses the file, otherwise, it attempts to download the file from MaxMind server and unzip it as well. The logic of this class is optimized for Openshift and usual normal environment. Keep note that the database file is loaded into memory, if your instance has shortage of the memory, comment <code>`line 57`</code> in <code>LoadDbFile.java</code>.
   </p>
   <h2 id = "apidocumentation">
     API documentation
