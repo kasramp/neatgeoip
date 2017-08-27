@@ -1,12 +1,12 @@
 # Neat Geo IP
 Neat Geo IP is a simple & free IP to country API
 
-##Description
+## Description
 Neat Geo IP is a simple Spring Boot Restful webservice which allows you to get the country of any given IP address. For IP address lookup [MaxMind](http://www.maxmind.com) database is used and it is automatically getting updated monthly via a bash script.
 The project is hosted on Openshift free tier and is available for anyone to use.
 Bear in mind that the service has 5-15 minutes down time every month due to automated database updating process.
 
-##Dependencies
+## Dependencies
 All the project dependencies are added in pom.xml file and once your run the project, all dependencies will be downloaded.
 
 ## How to use  
@@ -16,7 +16,7 @@ To run and deploy the project on your local or any desired server, first clone t
 	$ cd target  
 	$ java -jar neat-geo-ip-1.0-SNAPSHOT.jar
 
-##Project & API documentation
+## Project & API documentation
 To know more about the project structure and API documentation please refer to our Github page [documentation](http://kasramp.github.io/neatgeoip/documentation.html) at this link.
 
 ## Contact
@@ -29,7 +29,7 @@ The source of this project is published under GPLv3 excluding the database file 
 This product includes GeoLite2 data created by MaxMind, available from
 <a href="http://www.maxmind.com">http://www.maxmind.com</a>.
 
-##License
+## License
 Neat Geo IP is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 3
 as published by the Free Software Foundation.
@@ -41,4 +41,4 @@ GNU General Public License for more details.  <http://www.gnu.org/licenses/>
 
 Author(s):
 
-© 2016 Kasra Madadipouya <kasra@madadipouya.com>
+© 2016-2017 Kasra Madadipouya <kasra@madadipouya.com>
