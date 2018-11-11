@@ -21,7 +21,6 @@ To know more about the project structure and API documentation please refer to o
 
 ## Contact
 * kasra@madadipouya.com  
-* kasra_mp@live.com  
 	
 ## Disclaimer
 The source of this project is published under GPLv3 excluding the database file which belongs to [MaxMind](http://www.maxmind.com) Copyright© 2012-2016 MaxMind, Inc. All Rights Reserved. For more information about terms and conditons refer to our Github page section "[License and terms & conditions](http://kasramp.github.io/neatgeoip/#license-and-terms--conditions)".
